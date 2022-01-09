@@ -31,11 +31,16 @@ function App(props) {
     <Router>
       <nav>
         <Link to='/'> Home</Link>
-        <Link to='/createpost'> Create Post</Link>
+       
 
         {!isAuth 
         ? <Link to='/login' className='login-link'> Login</Link>
-        : <Link to='#' className='login-link' onClick={signUserOut}> Log Out</Link>} 
+        : (
+        <>
+        <Link to='/createpost'> Create Post</Link>
+        <Link to='#' className='login-link' onClick={signUserOut}> Log Out</Link>
+        </>
+        )} 
         
       </nav>
 

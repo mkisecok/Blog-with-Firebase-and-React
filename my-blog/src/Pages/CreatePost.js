@@ -2,15 +2,24 @@ import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
-import { addDoc } from 'firebase/firestore';
-
+import { addDoc,collection } from 'firebase/firestore';
+import { db ,auth} from '../firebase-config'
+import { useNavigate } from 'react-router-dom'
 
 function CreatePost() {
     const[ title, setTitle ] = useState('');
     const[ postText, setPostText ] = useState('');
+    const navigate=useNavigate();
+
+    const postsCollectionRef = collection(db , 'posts');
 
     const createPost = async ()=>{
-        await addDoc()
+        await addDoc(postsCollectionRef, {
+            title, 
+            postText, 
+            author:{name: auth.currentUser.displayName, id: auth.currentUser.uid },
+        });
+        navigate('/')
     }
 
     return (
@@ -28,7 +37,7 @@ function CreatePost() {
             multiline rows={6}  
             onChange={(event)=>{setPostText(event.target.value)}}
             />
-            <Button variant="contained">Submit Post</Button>
+            <Button variant="contained" onClick={ createPost }>Submit Post</Button>
 
             </Box>
         </div>
