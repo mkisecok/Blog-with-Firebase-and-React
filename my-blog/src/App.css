@@ -1,1 +1,40 @@
 
+/* HEX: #f0f0f0
+
+HEX: #c5d5c5
+
+HEX: #9fa9a3
+
+HEX: #e3e0cc */
+.App {
+    text-align: center;
+}
+
+body{
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Courier New', Courier, monospace;
+}
+nav{
+    margin: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #c5d5c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+a{
+    color: #3b3a30 ;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 24px;
+    padding: 10px;
+}
+a:hover{
+    border-bottom: 1px solid #3b3a30;
+    background-color: #9fa9a3;
+     border-radius: 2px;
+     color: #f0f0f0;
+}
