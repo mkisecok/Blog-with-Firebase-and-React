@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
@@ -6,7 +6,7 @@ import { addDoc,collection } from 'firebase/firestore';
 import { db ,auth} from '../firebase-config'
 import { useNavigate } from 'react-router-dom'
 
-function CreatePost() {
+function CreatePost({isAuth}) {
     const[ title, setTitle ] = useState('');
     const[ postText, setPostText ] = useState('');
     const navigate=useNavigate();
@@ -17,10 +17,17 @@ function CreatePost() {
         await addDoc(postsCollectionRef, {
             title, 
             postText, 
-            author:{name: auth.currentUser.displayName, id: auth.currentUser.uid },
+            author:{name: auth.currentUser.displayName , id: auth.currentUser.uid },
         });
         navigate('/')
-    }
+    };
+
+    useEffect(() => {
+        if(!isAuth){
+            navigate('/login')
+        }
+      
+    },[])
 
     return (
         <div className='createPostPage'>
