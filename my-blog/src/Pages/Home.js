@@ -1,6 +1,8 @@
 import {  collection, getDocs } from '@firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase-config';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Home() {
     const [ postLists, setPostList ]=useState([]);
@@ -28,10 +30,12 @@ function Home() {
                 <div className="post-header">
                     <h2 className='post-title'>{post.title}</h2> 
                 </div>
-               
+                <div className='delete'>  <Button variant="outlined" startIcon={<DeleteIcon />}>
+                        Delete
+                    </Button></div>
                 <div className='text-container'>{post.postText}</div>
                 <h4 className='post-sender'>@ {post.author.name}</h4>
-                </div>
+            </div>
                
                     
             </>)
