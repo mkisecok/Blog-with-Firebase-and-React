@@ -24,8 +24,15 @@ function Home() {
             {postLists.map((post,i)=>{
             return( 
             <>
-            <div className='post' key={ i } > {post.title}</div>
-                <div>{post.postText}</div>
+            <div className='post' key={ i } >
+                <div className="post-header">
+                    <h2 className='post-title'>{post.title}</h2> 
+                </div>
+               
+                <div className='text-container'>{post.postText}</div>
+                <h4 className='post-sender'>@ {post.author.name}</h4>
+                </div>
+               
                     
             </>)
         })}
