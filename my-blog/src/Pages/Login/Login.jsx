@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@mui/material/Button';
-import { auth, provider } from '../firebase-config'
+import { auth, provider } from '../../firebase-config'
 import {signInWithPopup} from 'firebase/auth'
 import {useNavigate} from 'react-router-dom'
 

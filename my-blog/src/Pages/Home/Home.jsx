@@ -1,8 +1,9 @@
 import {  collection, getDocs, deleteDoc, doc } from '@firebase/firestore';
 import React, { useEffect, useState } from 'react'
-import { auth, db } from '../firebase-config';
+import { auth, db } from '../../firebase-config';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 
 function Home({isAuth}) {
     const [ postLists, setPostList ]=useState([]);
@@ -32,8 +33,10 @@ function Home({isAuth}) {
             <>
             <div className='post' key={ i } >
                 <div className="post-header">
-                    <h2 className='post-title'>{post.title}</h2> 
+                    <h2 className='post-title'>{post.title}</h2>
+                     <div className='-quote-icon'>  </div>  
                 </div>
+                <div className='text-container'> <blockquote><h3>{post.postText}</h3></blockquote></div>
                 <div className='delete'>  
                 {isAuth && post.author.id === auth.currentUser.uid && 
                     <Button 
@@ -41,10 +44,9 @@ function Home({isAuth}) {
                     startIcon={<DeleteIcon />} 
                     onClick={()=>{ deletePost(post.id)
 
-                    }}>
-                        Delete
-                    </Button>}</div>
-                <div className='text-container'>{post.postText}</div>
+                    }}/> }
+                </div>
+               
                 <h4 className='post-sender'>@ {post.author.name}</h4>
             </div>
                

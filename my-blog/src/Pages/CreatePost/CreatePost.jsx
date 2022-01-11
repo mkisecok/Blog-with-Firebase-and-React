@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { addDoc,collection } from 'firebase/firestore';
-import { db ,auth} from '../firebase-config'
+import { db ,auth} from '../../firebase-config'
 import { useNavigate } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send';
 
