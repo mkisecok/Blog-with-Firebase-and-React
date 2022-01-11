@@ -1,0 +1,15 @@
+.createPostPage{
+    padding: 20vh 20vw;
+    margin: 0 auto;
+    background-color: rgb(192, 192, 192);
+}
+.Box{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+    margin: 0 auto;
+    width: 20vw;
+    padding: 20px auto;
+    border: 1px solid #c5d5c5;
+}

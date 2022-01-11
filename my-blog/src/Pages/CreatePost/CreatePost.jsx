@@ -6,6 +6,7 @@ import { addDoc,collection } from 'firebase/firestore';
 import { db ,auth} from '../../firebase-config'
 import { useNavigate } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send';
+import './CreatePost.css'
 
 function CreatePost({isAuth}) {
     const[ title, setTitle ] = useState('');
@@ -32,7 +33,7 @@ function CreatePost({isAuth}) {
 
     return (
         <div className='createPostPage'>
-            <Box  component="form" sx={{'& > :not(style)': { m: 1, width: '25ch' }, }}autoComplete="off">
+            <Box className='Box' component="form" sx={{'& > :not(style)': { m: 1, width: '25ch' }, }}autoComplete="off">
             <TextField 
             id="title" 
             label="Title" 
