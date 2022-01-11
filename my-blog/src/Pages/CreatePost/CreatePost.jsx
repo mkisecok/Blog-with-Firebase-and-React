@@ -35,7 +35,8 @@ function CreatePost({isAuth}) {
         <div className='createPostPage'>
             <Box className='Box' component="form" sx={{'& > :not(style)': { m: 1, width: '25ch' }, }}autoComplete="off">
             <TextField 
-            id="title" 
+            id="title"
+            
             label="Title" 
             variant="outlined" 
             onChange={(event)=>{setTitle(event.target.value)}}/>
@@ -46,7 +47,7 @@ function CreatePost({isAuth}) {
             multiline rows={6}  
             onChange={(event)=>{setPostText(event.target.value)}}
             />
-            <Button variant="contained" endIcon={<SendIcon />}  onClick={ createPost } >
+            <Button variant="contained"  endIcon={<SendIcon />} fullWidth onClick={ createPost } >
             Send Post
             </Button>
             </Box>

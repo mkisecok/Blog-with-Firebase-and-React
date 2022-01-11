@@ -1,0 +1,16 @@
+.loginPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+p{
+    margin-bottom: 50px;
+    font-size: large;
+}
+.goggle-icon{
+    font-size: 0.875rem ;
+    line-height: 1.75;
+}
