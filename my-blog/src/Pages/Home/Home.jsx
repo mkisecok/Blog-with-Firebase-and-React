@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { auth, db } from '../../firebase-config';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import './Home.css'
 
 
 function Home({isAuth}) {
