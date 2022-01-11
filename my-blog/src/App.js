@@ -11,7 +11,7 @@ import { auth } from './firebase-config';
 
 function App(props) {
  
-  const[isAuth,setIsAuth]=useState(false);
+  const[isAuth,setIsAuth]=useState(localStorage.getItem('isAuth'));
 
  
 
@@ -46,7 +46,7 @@ function App(props) {
 
     
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
+        <Route path='/' element={<Home isAuth={isAuth}/>}></Route>
         <Route path='/createpost' element={<CreatePost isAuth={isAuth}/>}></Route>
         <Route path='/login' element={<Login setIsAuth={setIsAuth}/>}></Route>
       </Routes>
