@@ -5,6 +5,7 @@ import { Button } from '@mui/material';
 import { addDoc,collection } from 'firebase/firestore';
 import { db ,auth} from '../firebase-config'
 import { useNavigate } from 'react-router-dom'
+import SendIcon from '@mui/icons-material/Send';
 
 function CreatePost({isAuth}) {
     const[ title, setTitle ] = useState('');
@@ -44,8 +45,9 @@ function CreatePost({isAuth}) {
             multiline rows={6}  
             onChange={(event)=>{setPostText(event.target.value)}}
             />
-            <Button variant="contained" onClick={ createPost }>Submit Post</Button>
-
+            <Button variant="contained" endIcon={<SendIcon />}  onClick={ createPost } >
+            Send Post
+            </Button>
             </Box>
         </div>
     )
