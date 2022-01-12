@@ -1,4 +1,31 @@
 .homePage{
     background-color: rgb(228, 228, 228);
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #c5d5c5;
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    margin-bottom: 20px;
+
+}
+.first-hr{
+    border-top: 1px solid #3b3a30;
+    width: 30%;
+    opacity: 0.3;
+}
+.last-hr{
+    border-top: 1px solid #3b3a30;
+    width: 60%;
+    opacity: 0.3;
+}
+.post-sender{
+    opacity: 0.4;
 }

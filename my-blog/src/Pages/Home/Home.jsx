@@ -37,6 +37,7 @@ function Home({isAuth}) {
                     <h2 className='post-title'>{post.title}</h2>
                      <div className='-quote-icon'>  </div>  
                 </div>
+                <hr className='first-hr'/>
                 <div className='text-container'> <blockquote><h3>{post.postText}</h3></blockquote></div>
                 <div className='delete'>  
                 {isAuth && post.author.id === auth.currentUser.uid && 
@@ -47,8 +48,8 @@ function Home({isAuth}) {
 
                     }}/> }
                 </div>
-               
-                <h4 className='post-sender'>@ {post.author.name}</h4>
+               <hr className='last-hr'/>
+                <h4 className='post-sender'>From {post.author.name}</h4>
             </div>
                
                     
