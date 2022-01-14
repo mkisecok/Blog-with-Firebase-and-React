@@ -4,6 +4,11 @@
     margin: 0;
     padding: 20px;
 }
+.active{
+    background-color: #535853 ;
+    color: white;
+    
+}
 .post{
     display: flex;
     flex-direction: column;
@@ -19,6 +24,10 @@
 .text-container{
     align-self: flex-start;
     margin:0 5vw;
+}
+.delete{
+    align-self: flex-end;
+    margin: 0 5vw;
 }
 
 .first-hr{

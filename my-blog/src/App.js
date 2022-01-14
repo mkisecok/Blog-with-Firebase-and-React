@@ -1,6 +1,6 @@
 
 import './App.css';
-import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, NavLink,Link } from 'react-router-dom'
 import Home from './Pages/Home/Home';
 import CreatePost from './Pages/CreatePost/CreatePost';
 import Login from './Pages/Login/Login';
@@ -30,18 +30,15 @@ function App(props) {
 
     <Router>
       <nav>
-        <Link to='/'> Home</Link>
-       
-
+        <NavLink to='/' > Home</NavLink>
         {!isAuth 
-        ? <Link to='/login' className='login-link'> Login</Link>
+        ? <NavLink to='/login' className='login-link'> Login</NavLink>
         : (
         <>
-        <Link to='/createpost'> Create Post</Link>
-        <Link to='#' className='login-link' onClick={signUserOut}> Log Out</Link>
+        <NavLink to='/createpost'> Create Post</NavLink>
+        <Link to='#' className='login-link' onClick={ signUserOut }> Log Out</Link>
         </>
         )} 
-        
       </nav>
 
     
@@ -51,12 +48,6 @@ function App(props) {
         <Route path='/login' element={<Login setIsAuth={setIsAuth}/>}></Route>
       </Routes>
     </Router>
-  
-
-
-    
-
-    
   );
 }
 

@@ -39,19 +39,21 @@ function CreatePost({isAuth}) {
             <TextField 
             id="title"
             className='text-area'
-            label="Title" 
+            label="Title"
+           
             variant="outlined" 
             onChange={(event)=>{setTitle(event.target.value)}}/>
 
             <TextField 
             id="post" 
             className='text-area'
-            label="Post..." 
+            label="Text " 
+            placeholder='You can write by Markdown'
             multiline rows={6}  
             onChange={(event)=>{setPostText(event.target.value)}}
             />
             <Button variant="contained"  endIcon={<SendIcon />} fullWidth onClick={ createPost } >
-            Send Post
+            Add Post
             </Button>
             </Box>
         </div>
