@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { auth, db } from '../../firebase-config';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Moment from 'react-moment'
 import './Home.css'
 
 
@@ -17,7 +18,7 @@ function Home({isAuth}) {
             const data = await getDocs(postsCollectionRef)
             
             setPostList(data.docs.map((doc)=>({ ...doc.data(), id: doc.id})))
-            //  console.log(data);
+             
         };
         getPosts();
         
@@ -26,6 +27,7 @@ function Home({isAuth}) {
         const postDoc = doc(db, 'posts', id )
         await deleteDoc(postDoc)
     }
+    
     
     return (
         <div className='homePage'>
@@ -38,7 +40,7 @@ function Home({isAuth}) {
                      <div className='-quote-icon'>  </div>  
                 </div>
                 <hr className='first-hr'/>
-                <div className='text-container'> <blockquote><h3>{post.postText}</h3></blockquote></div>
+                <div className='text-container'> <blockquote><p>{post.postText}</p></blockquote></div>
                 <div className='delete'>  
                 {isAuth && post.author.id === auth.currentUser.uid && 
                     <Button 
@@ -48,8 +50,16 @@ function Home({isAuth}) {
 
                     }}/> }
                 </div>
+                
                <hr className='last-hr'/>
-                <h4 className='post-sender'>From {post.author.name}</h4>
+               <div className='post-footer'>
+               <div className='post-sender'>From: {post.author.name}</div>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <div>Created:<Moment fromNow >{new Date(post.timeStamp)}</Moment></div> 
+               
+               </div>
+               
+               
             </div>
                
                     
