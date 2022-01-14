@@ -4,6 +4,7 @@ import { auth, db } from '../../firebase-config';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Moment from 'react-moment'
+import ReactMarkdown from 'react-markdown';
 import './Home.css'
 
 
@@ -40,7 +41,7 @@ function Home({isAuth}) {
                      <div className='-quote-icon'>  </div>  
                 </div>
                 <hr className='first-hr'/>
-                <div className='text-container'> <blockquote><p>{post.postText}</p></blockquote></div>
+                <div className='text-container'> <ReactMarkdown>{post.postText}</ReactMarkdown></div>
                 <div className='delete'>  
                 {isAuth && post.author.id === auth.currentUser.uid && 
                     <Button 

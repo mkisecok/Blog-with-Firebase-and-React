@@ -16,6 +16,11 @@
     margin-bottom: 20px;
 
 }
+.text-container{
+    align-self: flex-start;
+    margin:0 5vw;
+}
+
 .first-hr{
     border-top: 1px solid #3b3a30;
     width: 30%;
