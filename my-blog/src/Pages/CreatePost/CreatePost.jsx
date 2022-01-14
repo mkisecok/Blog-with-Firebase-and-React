@@ -14,7 +14,7 @@ function CreatePost({isAuth}) {
     const navigate=useNavigate();
 
     const postsCollectionRef = collection(db , 'posts');
-    console.log(auth)
+   
     const createPost = async ()=>{
         await addDoc(postsCollectionRef, {
             timeStamp:new Date().getTime(),

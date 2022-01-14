@@ -32,11 +32,15 @@ function App(props) {
       <nav>
         <NavLink to='/' > Home</NavLink>
         {!isAuth 
-        ? <NavLink to='/login' className='login-link'> Login</NavLink>
+        ? <NavLink to='/login' > Login</NavLink>
         : (
         <>
         <NavLink to='/createpost'> Create Post</NavLink>
-        <Link to='#' className='login-link' onClick={ signUserOut }> Log Out</Link>
+        <div className='logout-container'>
+        <Link to='#' className='logout-link' onClick={ signUserOut }> Log Out</Link>
+        <span className='current-user'>👤{auth.currentUser.displayName}</span>
+        </div>
+        
         </>
         )} 
       </nav>

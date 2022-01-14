@@ -1,5 +1,7 @@
 
-/* HEX: #f0f0f0
+/* 
+Color palette
+HEX: #f0f0f0
 
 HEX: #c5d5c5
 
@@ -22,7 +24,7 @@ nav{
     height: 80px;
     background-color: #c5d5c5;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-decoration: none;
 }
@@ -38,6 +40,19 @@ a:hover{
     background-color: #9fa9a3;
      border-radius: 2px;
      color: #f0f0f0;
+}
+.logout-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-link{
+    margin: 5px;
+}
+.current-user{
+    margin: 0 5px;
 }
 
 
