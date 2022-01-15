@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { addDoc,collection } from 'firebase/firestore';
 import { db ,auth} from '../../firebase-config'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
@@ -15,6 +15,7 @@ function CreatePost({isAuth}) {
     const[ postText, setPostText ] = useState('');
     const[ isLoading, setLoading] = useState(false)
     const navigate=useNavigate();
+    // const { id }=useParams();
 
     const postsCollectionRef = collection(db , 'posts');
    
@@ -46,7 +47,7 @@ function CreatePost({isAuth}) {
                 isLoading
 
                 ?
-                
+
                 <Alert severity="success" >
                 <AlertTitle>Success</AlertTitle>
                 The Post has been sent succesfully — <strong>check it out!</strong>

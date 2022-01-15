@@ -1,8 +1,10 @@
 import {  collection, getDocs, deleteDoc, doc } from '@firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../../firebase-config';
+// import { useParams, useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import Moment from 'react-moment'
 import ReactMarkdown from 'react-markdown';
 import './Home.css'
@@ -11,7 +13,8 @@ import './Home.css'
 function Home({isAuth}) {
     const [ postLists, setPostList ]=useState([]);
     const postsCollectionRef = collection(db , 'posts');
-
+    // const { id } = useParams();
+    // const navigate=useNavigate();
 
     useEffect(()=>{
 
@@ -25,10 +28,13 @@ function Home({isAuth}) {
         
     });
     const deletePost = async(id) => {
-        const postDoc = doc(db, 'posts', id )
+        const postDoc = doc(db, 'posts', id );
+        
         await deleteDoc(postDoc)
     }
-    
+    // const handleEdit = ()=> {
+    //     navigate(`/create/${ id }/edit`)
+    // }
     
     
     return (
@@ -45,12 +51,17 @@ function Home({isAuth}) {
                 <div className='text-container'> <ReactMarkdown>{post.postText}</ReactMarkdown></div>
                 <div className='delete'>  
                 {isAuth && post.author.id === auth.currentUser.uid && 
+                <>
                     <Button 
                     variant="outlined" 
                     startIcon={<DeleteIcon />} 
                     onClick={()=>{  deletePost(post.id)
+                        
+                    }}/> 
 
-                    }}/> }
+                    <EditIcon color="primary" > </EditIcon> 
+                    
+                 </>   }
                 </div>
                 
                <hr className='last-hr'/>
