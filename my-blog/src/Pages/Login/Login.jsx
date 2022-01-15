@@ -6,13 +6,14 @@ import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import { FcGoogle } from 'react-icons/fc'
 
-function Login({setIsAuth}) {
+function Login({setIsAuth,setUser}) {
     let navigate=useNavigate()
 
     const signInWithGoogle = ()=>{
         signInWithPopup(auth, provider).then((result)=>{
             localStorage.setItem('isAuth',true)
             setIsAuth(true)
+            setUser({img : auth.currentUser.photoURL, name:auth.currentUser.displayName});
             navigate('/')
         })
     }
