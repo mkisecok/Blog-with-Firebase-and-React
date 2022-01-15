@@ -30,6 +30,7 @@ function Home({isAuth}) {
     }
     
     
+    
     return (
         <div className='homePage'>
             {postLists.map((post,i)=>{
@@ -47,7 +48,7 @@ function Home({isAuth}) {
                     <Button 
                     variant="outlined" 
                     startIcon={<DeleteIcon />} 
-                    onClick={()=>{ deletePost(post.id)
+                    onClick={()=>{  deletePost(post.id)
 
                     }}/> }
                 </div>

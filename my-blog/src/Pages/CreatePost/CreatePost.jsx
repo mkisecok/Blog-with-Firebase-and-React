@@ -6,11 +6,14 @@ import { addDoc,collection } from 'firebase/firestore';
 import { db ,auth} from '../../firebase-config'
 import { useNavigate } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 import './CreatePost.css'
 
 function CreatePost({isAuth}) {
     const[ title, setTitle ] = useState('');
     const[ postText, setPostText ] = useState('');
+    const[ isLoading, setLoading] = useState(false)
     const navigate=useNavigate();
 
     const postsCollectionRef = collection(db , 'posts');
@@ -23,11 +26,17 @@ function CreatePost({isAuth}) {
             author:{name: auth.currentUser.displayName , id: auth.currentUser.uid },
             
         });
-        navigate('/')
+        setLoading(true)
+        setTimeout(()=>{
+            navigate('/')
+        },2000)
+        
     };
 
     useEffect(() => {
         if(!isAuth){
+
+           
             navigate('/login')
         }
       
@@ -35,6 +44,15 @@ function CreatePost({isAuth}) {
 
     return (
         <div className='createPostPage'>
+            {
+                isLoading
+                ?
+                <Alert severity="success" >
+                <AlertTitle>Success</AlertTitle>
+                The Post has been sent succesfully — <strong>check it out!</strong>
+                </Alert>
+                :
+            
             <Box className='Box' component="form" sx={{'& > :not(style)': { m: 1, width: '25ch' }, }}autoComplete="off">
             <TextField 
             id="title"
@@ -56,6 +74,7 @@ function CreatePost({isAuth}) {
             Add Post
             </Button>
             </Box>
+            }
         </div>
     )
 }
