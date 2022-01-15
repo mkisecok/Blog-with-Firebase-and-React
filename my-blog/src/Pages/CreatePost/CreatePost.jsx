@@ -35,8 +35,6 @@ function CreatePost({isAuth}) {
 
     useEffect(() => {
         if(!isAuth){
-
-           
             navigate('/login')
         }
       
@@ -46,34 +44,37 @@ function CreatePost({isAuth}) {
         <div className='createPostPage'>
             {
                 isLoading
+
                 ?
+                
                 <Alert severity="success" >
                 <AlertTitle>Success</AlertTitle>
                 The Post has been sent succesfully — <strong>check it out!</strong>
                 </Alert>
+
                 :
             
-            <Box className='Box' component="form" sx={{'& > :not(style)': { m: 1, width: '25ch' }, }}autoComplete="off">
-            <TextField 
-            id="title"
-            className='text-area'
-            label="Title"
-           
-            variant="outlined" 
-            onChange={(event)=>{setTitle(event.target.value)}}/>
+                <Box className='Box' component="form" sx={{'& > :not(style)': { m: 1, width:    '25ch' }, }}autoComplete="off">
+                <TextField 
+                id="title"
+                className='text-area'
+                label="Title"
+                
+                variant="outlined" 
+                onChange={(event)=>{setTitle(event.target.value)}}/>
 
-            <TextField 
-            id="post" 
-            className='text-area'
-            label="Text " 
-            placeholder='You can write by Markdown'
-            multiline rows={6}  
-            onChange={(event)=>{setPostText(event.target.value)}}
-            />
-            <Button variant="contained"  endIcon={<SendIcon />} fullWidth onClick={ createPost } >
-            Add Post
-            </Button>
-            </Box>
+                <TextField 
+                id="post" 
+                className='text-area'
+                label="Text " 
+                placeholder='You can write by Markdown'
+                multiline rows={6}  
+                onChange={(event)=>{setPostText(event.target.value)}}
+                />
+                <Button variant="contained"  endIcon={<SendIcon />} fullWidth onClick={ createPost } >
+                Add Post
+                </Button>
+                </Box>
             }
         </div>
     )
