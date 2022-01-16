@@ -20,20 +20,25 @@ function Home({isAuth}) {
 
         const getPosts= async ()=>{
             const data = await getDocs(postsCollectionRef)
-            
+             
             setPostList(data.docs.map((doc)=>({ ...doc.data(), id: doc.id})))
              
+    
         };
         getPosts();
         
     });
     const deletePost = async(id) => {
         const postDoc = doc(db, 'posts', id );
-        
+        console.log(postDoc);
         await deleteDoc(postDoc)
     }
-    // const handleEdit = ()=> {
+    // const handleEdit = async  (id)=> {
+    //     const data = await getDocs(postsCollectionRef)
+             
+    //     setPostList(data.docs.map((doc)=>({ ...doc.data(), id: doc.id})))
     //     navigate(`/create/${ id }/edit`)
+
     // }
     
     
@@ -55,9 +60,10 @@ function Home({isAuth}) {
                     <Button 
                     variant="outlined" 
                     startIcon={<DeleteIcon />} 
-                    onClick={()=>{  deletePost(post.id)
+                    /> 
+                    <DeleteIcon color='danger' onClick={()=>{  deletePost(post.id)
                         
-                    }}/> 
+                    }} />
 
                     <EditIcon color="primary" > </EditIcon> 
                     

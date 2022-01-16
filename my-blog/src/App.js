@@ -58,7 +58,7 @@ function App(props) {
       <Routes>
         <Route path='/' element={<Home isAuth={isAuth}/>}></Route>
         <Route path='/createpost' element={<CreatePost isAuth={isAuth}/>}></Route>
-        {/* <Route path='/createpost/:id/edit' element={<CreatePost/>} isAuth={isAuth}></Route> */}
+        <Route path='/createpost/:id/edit' element={<CreatePost/>} isAuth={isAuth}></Route>
         <Route path='/login' element={<Login setIsAuth={setIsAuth} setUser={setUser}/>}></Route>
       </Routes>
     </Router>
