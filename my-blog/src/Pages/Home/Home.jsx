@@ -1,21 +1,22 @@
 import {  collection, getDocs, deleteDoc, doc } from '@firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../../firebase-config';
-// import { useParams, useNavigate} from 'react-router-dom';
-import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Moment from 'react-moment'
 import ReactMarkdown from 'react-markdown';
 import './Home.css'
-
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import Avatar from '@mui/material/Avatar';
+import { useContext } from 'react'
+import ColorContext from '../../ColorContext';
 
 function Home({isAuth}) {
     const [ postLists, setPostList ]=useState([]);
     const postsCollectionRef = collection(db , 'posts');
-    // const { id } = useParams();
-    // const navigate=useNavigate();
-
+    const { randomColor }=useContext(ColorContext)
+   
+   
+    
     useEffect(()=>{
 
         const getPosts= async ()=>{
@@ -33,41 +34,30 @@ function Home({isAuth}) {
         console.log(postDoc);
         await deleteDoc(postDoc)
     }
-    // const handleEdit = async  (id)=> {
-    //     const data = await getDocs(postsCollectionRef)
-             
-    //     setPostList(data.docs.map((doc)=>({ ...doc.data(), id: doc.id})))
-    //     navigate(`/create/${ id }/edit`)
-
-    // }
+    
+    
     
     
     return (
         <div className='homePage'>
             {postLists.map((post,i)=>{
+              
             return( 
             <>
             <div className='post' key={ i } >
+            <Avatar sx={{ backgroundColor:randomColor,width: 56, height: 56  }} className='quote-icon' variant="rounded"><FormatQuoteIcon /> </Avatar> 
                 <div className="post-header">
+                     
                     <h2 className='post-title'>{post.title}</h2>
-                     <div className='-quote-icon'>  </div>  
                 </div>
                 <hr className='first-hr'/>
                 <div className='text-container'> <ReactMarkdown>{post.postText}</ReactMarkdown></div>
                 <div className='delete'>  
-                {isAuth && post.author.id === auth.currentUser.uid && 
-                <>
-                    <Button 
-                    variant="outlined" 
-                    startIcon={<DeleteIcon />} 
-                    /> 
-                    <DeleteIcon color='danger' onClick={()=>{  deletePost(post.id)
-                        
-                    }} />
+                    {isAuth && post.author.id === auth.currentUser.uid && 
 
-                    <EditIcon color="primary" > </EditIcon> 
-                    
-                 </>   }
+                        <DeleteIcon  fontSize="large" sx={{cursor:'pointer', color:'red'}} onClick={()=>{  deletePost(post.id)
+                        }} />
+                    }
                 </div>
                 
                <hr className='last-hr'/>
@@ -77,11 +67,7 @@ function Home({isAuth}) {
                <div>Created:<Moment fromNow >{new Date(post.timeStamp)}</Moment></div> 
                
                </div>
-               
-               
             </div>
-               
-                    
             </>)
         })}
             

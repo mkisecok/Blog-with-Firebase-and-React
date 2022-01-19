@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.6.2",
     "moment": "^2.29.1",
+    "random-hex-color-generator": "^1.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",

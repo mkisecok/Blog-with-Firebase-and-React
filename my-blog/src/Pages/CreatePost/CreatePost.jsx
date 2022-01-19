@@ -9,17 +9,21 @@ import SendIcon from '@mui/icons-material/Send';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import './CreatePost.css'
+import { useContext } from 'react'
+import ColorContext from '../../ColorContext';
+const { randomHexColor }= require('random-hex-color-generator')
 
 function CreatePost({isAuth}) {
     const[ title, setTitle ] = useState('');
     const[ postText, setPostText ] = useState('');
     const[ isLoading, setLoading] = useState(false)
     const navigate=useNavigate();
-    // const { id }=useParams();
+    const { setRandomColor }=useContext(ColorContext)
 
     const postsCollectionRef = collection(db , 'posts');
    
     const createPost = async ()=>{
+        setRandomColor(randomHexColor())
         await addDoc(postsCollectionRef, {
             timeStamp:new Date().getTime(),
             title, 
@@ -40,6 +44,7 @@ function CreatePost({isAuth}) {
         }
       
     },[])
+   
 
     return (
         <div className='createPostPage'>

@@ -8,13 +8,15 @@ import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import  {signOut}  from 'firebase/auth'
 import { auth } from './firebase-config';
-
+import ColorContext from './ColorContext';
 
 
 function App(props) {
  
   const[isAuth,setIsAuth]=useState(localStorage.getItem('isAuth'));
   const[user, setUser]=useState({img:'', name:''})
+  const [randomColor,setRandomColor]=useState('grey')
+  const value={randomColor, setRandomColor}
  
   const signUserOut = ()=>{
 
@@ -54,13 +56,14 @@ function App(props) {
         )} 
       </nav>
 
-    
+    <ColorContext.Provider value={value}>
       <Routes>
         <Route path='/' element={<Home isAuth={isAuth}/>}></Route>
         <Route path='/createpost' element={<CreatePost isAuth={isAuth}/>}></Route>
         <Route path='/createpost/:id/edit' element={<CreatePost/>} isAuth={isAuth}></Route>
         <Route path='/login' element={<Login setIsAuth={setIsAuth} setUser={setUser}/>}></Route>
       </Routes>
+      </ColorContext.Provider>
     </Router>
   );
 }

@@ -21,6 +21,13 @@
     margin-bottom: 20px;
 
 }
+
+.quote-icon{
+    position: relative;
+    left: -45%;
+    margin-top: 10px;
+    
+}
 .text-container{
     align-self: flex-start;
     margin:0 5vw;
